@@ -6,16 +6,14 @@ import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
 const cx = classNames.bind(styles)
 
-const Button = ({ to, href, primary = false, outline = false, text = false, disabled = false, rounded = false, small = false, large = false, className, children, leftIcon, onClick, ...passProps }) => {
+const Button = ({ to, href, primary = false, outline = false, text = false, disabled = false, rounded = false, small = false, large = false, className, children, leftIcon, rightIcon, onClick, ...passProps }) => {
     let Comp = 'button'
+
     const props = {
         onClick,
         ...passProps
     }
 
-    if (disabled) {
-        delete props.onClick
-    }
 
     if (disabled) {
         Object.keys(props).forEach(propKey => {
@@ -41,6 +39,7 @@ const Button = ({ to, href, primary = false, outline = false, text = false, disa
             <span className={cx('title')}>
                 {children}
             </span>
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     )
 }

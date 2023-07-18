@@ -6,7 +6,7 @@
     padding: 9px 16px;
     border-radius: 4px;
 
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 700;
     cursor: pointer;
     background-color: var(--white);
@@ -27,6 +27,12 @@
 .icon + .title,
 .title + .icon {
     margin-left: 8px;
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }
 
 //Button types
@@ -72,8 +78,6 @@
         text-decoration: underline;
     }
 }
-
-//Disabled
 
 //Button sizes
 .small {

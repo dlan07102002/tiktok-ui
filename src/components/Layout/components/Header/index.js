@@ -4,7 +4,7 @@ import Tippy from '@tippyjs/react/headless';
 // import 'tippy.js/dist/tippy.css'; // optional
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSignIn } from '@fortawesome/free-solid-svg-icons';
+import { faCircleQuestion, faCircleXmark, faEarthAsia, faEllipsisVertical, faKeyboard, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -13,8 +13,26 @@ import styles from './Header.module.scss'
 import images from '~/assets/images'
 import { Wrapper as PopperWrapper } from '~/components/Popper'
 import AccountItem from '../../AccountItem';
+import Menu from '~/components/Popper/Menu';
 const cx = classNames.bind(styles)
 // giúp viết classname dưới dạng dấu gạch ngang 
+
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faEarthAsia} />,
+        title: 'English'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Feedback and help',
+        to: '/feedback'
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Keyboard shortcuts',
+
+    }
+]
 
 function Header() {
     const [searchResult, setSearchResult] = useState([])
@@ -59,10 +77,16 @@ function Header() {
 
                 </div>
             </Tippy>
-            <div className={cx('action')}>
+            <div className={cx('actions')}>
                 <Button text >Upload</Button>
 
                 <Button primary >Log in</Button>
+
+                <Menu items={MENU_ITEMS}>
+                    <button className={cx('more-btn')}>
+                        <FontAwesomeIcon icon={faEllipsisVertical} />
+                    </button>
+                </Menu>
             </div>
         </div>
     </header >
