@@ -37,6 +37,7 @@ const Menu = ({ children, items = [], onChange = defaultFn }) => {
     return (
         <Tippy
             //interactive để có thể tương tác
+            offset={[12, 8]}
             interactive
             delay={[0, 700]}
             placement='bottom-end'
@@ -48,6 +49,7 @@ const Menu = ({ children, items = [], onChange = defaultFn }) => {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setHistory(prev => prev.slice(0, 1))}
         >
 
             {children}
