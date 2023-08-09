@@ -106,14 +106,78 @@
     cursor: pointer;
 }
 
-.action-btn {
+.upload-btn {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(22, 24, 35, 0.12);
+    border-radius: 2px;
+    min-width: 110px;
+    padding: 0 16px;
+    height: 36px;
+
+    background-color: transparent;
     font-size: 2.2rem;
     color: #161823;
-    background-color: transparent;
-    padding: 4px 12px;
-    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 1;
+    font-style: normal;
 }
 
+.upload-btn:hover {
+    cursor: pointer;
+    background-color: rgba(22, 24, 35, 0.03);
+}
+
+.upload-icon {
+    svg {
+        height: 20px;
+        width: 20px;
+        margin-right: 8px;
+    }
+}
+
+.message-icon {
+    margin-left: 16px;
+    cursor: pointer;
+    height: 32px;
+    padding: 3px 3px 0;
+    position: relative;
+    -webkit-app-region: no-drag;
+    svg {
+        width: 26px;
+        height: 26px;
+        transform: none;
+    }
+}
+
+.inbox-icon {
+    margin-left: 16px;
+    position: relative;
+    -webkit-app-region: no-drag;
+    svg {
+        cursor: pointer;
+        display: block;
+    }
+}
+
+.inbox-number {
+    position: absolute;
+    top: -20%;
+    font-family: TikTokFont, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    left: 16px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(254, 44, 85);
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    border-radius: 10px;
+}
 //
 .user-avatar {
     height: 32px;
