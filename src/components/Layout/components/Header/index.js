@@ -1,11 +1,12 @@
 import 'tippy.js/dist/tippy.css'; // optional
 import Tippy from '@tippyjs/react';
-
+import { Link } from 'react-router-dom';
 
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 
+import routeConfig from '~/config/routes';
 
 import { UploadIcon, MessageIcon, InboxIcon } from '~/components/icons';
 import Button from '~/components/Button';
@@ -28,14 +29,14 @@ const MENU_ITEMS = [
                 {
                     type: 'language',
                     code: 'en',
-                    title: 'English'
+                    title: 'English',
+
                 },
                 {
                     type: 'language',
                     code: 'vi',
                     title: 'Tiếng Việt'
-                },
-
+                }
             ]
         }
     },
@@ -92,7 +93,7 @@ function Header() {
 
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
-            <img src={images.logo} alt="Tiktok"></img>
+            <Link to={routeConfig.home} className={cx('logo-link')}> <img src={images.logo} alt="Tiktok" /> </Link>
 
             {/* Search */}
 

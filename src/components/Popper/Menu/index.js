@@ -11,7 +11,7 @@ const cx = classNames.bind(styles)
 
 const defaultFn = () => { }
 
-const Menu = ({ children, items = [], onChange = defaultFn }) => {
+const Menu = ({ children, items = [], hideOnClick = false, onChange = defaultFn }) => {
     const [history, setHistory] = useState([{ data: items }])
     const current = history[history.length - 1];
 
@@ -37,6 +37,7 @@ const Menu = ({ children, items = [], onChange = defaultFn }) => {
     return (
         <Tippy
             //interactive để có thể tương tác
+            hideOnClick={hideOnClick}
             offset={[12, 8]}
             interactive
             delay={[0, 700]}
@@ -45,7 +46,9 @@ const Menu = ({ children, items = [], onChange = defaultFn }) => {
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-popper')}>
                         {history.length > 1 && <Header title='Language' onBack={onBack} />}
-                        {renderItem()}
+                        <div className={cx('menu-body')}>
+                            {renderItem()}
+                        </div>
                     </PopperWrapper>
                 </div>
             )}

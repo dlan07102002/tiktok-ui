@@ -70,54 +70,60 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false)
     }
-    console.log([].length)
     return (
-        <HeadlessTippy
-            //interactive để có thể tương tác
-            interactive
-            placement='bottom'
-            visible={showResult && searchResult.length > 0}
-            render={(attrs) => (
-                <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        <h4 className={cx('search-title')}>Accounts</h4>
-                        {
-                            searchResult.map((result) => (
-                                <AccountItem key={result.id} data={result} />
-                            ))
-                        }
-                    </PopperWrapper>
-                </div>
-            )}
-            onClickOutside={handleHideResult}
-        >
-            <div className={cx('search')}>
-                <input
-                    ref={inputRef}
-                    value={searchValue}
-                    placeholder='Search accounts and videos'
-                    onFocus={() => setShowResult(true)}
-                    onChange={handleChange}
-                    spellCheck={false}
-                />
 
-                {!isLoading && !!searchValue &&
-                    <button className={cx('clear')} onClick={handleClear}>
-                        <FontAwesomeIcon icon={faCircleXmark} />
+        //Using a wrapper <div> tag arround the reference element solves
+        //this by creating a new parentNode context
+
+        <div>
+            <HeadlessTippy
+                //interactive để có thể tương tác
+                interactive
+                appendTo={() => document.body}
+                placement='bottom'
+                visible={showResult && searchResult.length > 0}
+                render={(attrs) => (
+                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                        <PopperWrapper>
+                            <h4 className={cx('search-title')}>Accounts</h4>
+                            {
+                                searchResult.map((result) => (
+                                    <AccountItem key={result.id} data={result} />
+                                ))
+                            }
+                        </PopperWrapper>
+                    </div>
+                )}
+                onClickOutside={handleHideResult}
+            >
+                <div className={cx('search')}>
+                    <input
+                        ref={inputRef}
+                        value={searchValue}
+                        placeholder='Search accounts and videos'
+                        onFocus={() => setShowResult(true)}
+                        onChange={handleChange}
+                        spellCheck={false}
+                    />
+
+                    {!isLoading && !!searchValue &&
+                        <button className={cx('clear')} onClick={handleClear}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </button>
+                    }
+
+                    {/* Loading */}
+                    {
+                        isLoading &&
+                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
+                    }
+
+                    <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()} onClick={handleSubmit}>
+                        <SearchIcon />
                     </button>
-                }
-
-                {/* Loading */}
-                {
-                    isLoading &&
-                    <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-                }
-
-                <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()} onClick={handleSubmit}>
-                    <SearchIcon />
-                </button>
-            </div>
-        </HeadlessTippy >
+                </div>
+            </HeadlessTippy >
+        </div>
     );
 }
 

@@ -18,6 +18,7 @@
         font-size: 1.6rem;
         caret-color: var(--primary);
         background-color: transparent;
+        font-family: var(--font-family);
     }
     //How to select input not empty css selector
     input:not(:placeholder-shown) ~ .search-btn {
@@ -58,6 +59,10 @@
     &:active {
         background-color: rgba(22, 24, 35, 0.06);
     }
+}
+
+.clear {
+    cursor: pointer;
 }
 
 .clear,
