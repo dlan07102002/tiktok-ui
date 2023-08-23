@@ -37,7 +37,7 @@ function Search() {
         const fetchApi = async () => {
             setIsLoading(true);
 
-            const result = await searchResult.search();
+            const result = await searchServices.search(searchValue);
 
             setSearchResult(result);
 
@@ -49,6 +49,18 @@ function Search() {
 
     }, [debounced])
 
+    const handleChange = e => {
+        const searchValue = e.target.value;
+
+        if (!searchValue.startsWith(' '))
+            setSearchValue(searchValue)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+    }
+
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
@@ -58,7 +70,7 @@ function Search() {
     const handleHideResult = () => {
         setShowResult(false)
     }
-
+    console.log([].length)
     return (
         <HeadlessTippy
             //interactive để có thể tương tác
@@ -85,7 +97,7 @@ function Search() {
                     value={searchValue}
                     placeholder='Search accounts and videos'
                     onFocus={() => setShowResult(true)}
-                    onChange={e => setSearchValue(e.target.value)}
+                    onChange={handleChange}
                     spellCheck={false}
                 />
 
@@ -101,11 +113,11 @@ function Search() {
                     <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
                 }
 
-                <button className={cx('search-btn')}>
+                <button className={cx('search-btn')} onMouseDown={e => e.preventDefault()} onClick={handleSubmit}>
                     <SearchIcon />
                 </button>
             </div>
-        </HeadlessTippy>
+        </HeadlessTippy >
     );
 }
 
