@@ -6,7 +6,7 @@ import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 
-import routeConfig from '~/config/routes';
+import config from '~/config';
 
 import { UploadIcon, MessageIcon, InboxIcon } from '~/components/icons';
 import Button from '~/components/Button';
@@ -93,7 +93,7 @@ function Header() {
 
     return <header className={cx('wrapper')}>
         <div className={cx('inner')}>
-            <Link to={routeConfig.home} className={cx('logo-link')}> <img src={images.logo} alt="Tiktok" /> </Link>
+            <Link to={config.routes.home} className={cx('logo-link')}> <img src={images.logo} alt="Tiktok" /> </Link>
 
             {/* Search */}
 

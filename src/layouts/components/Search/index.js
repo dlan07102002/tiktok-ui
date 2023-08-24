@@ -7,7 +7,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper'
 import classNames from 'classnames/bind';
 import { useEffect, useState, useRef } from 'react';
 
-import * as searchServices from '~/apiServices/searchServices'
+import * as searchService from '~/services/searchService'
 import styles from './Search.module.scss'
 import AccountItem from '../../AccountItem';
 import { useDebounce } from '~/hooks';
@@ -37,7 +37,7 @@ function Search() {
         const fetchApi = async () => {
             setIsLoading(true);
 
-            const result = await searchServices.search(searchValue);
+            const result = await searchService.search(searchValue);
 
             setSearchResult(result);
 
