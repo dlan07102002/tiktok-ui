@@ -1,5 +1,5 @@
 import Header from '~/layouts/components/Header'
-
+import PropTypes from "prop-types"
 
 function HeaderOnly({ children }) {
     return (<div>
@@ -11,5 +11,10 @@ function HeaderOnly({ children }) {
         </div>
     </div>);
 }
+
+HeaderOnly.propTypes = {
+    children: PropTypes.node
+}
+
 
 export default HeaderOnly;
