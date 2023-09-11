@@ -19,6 +19,7 @@
         caret-color: var(--primary);
         background-color: transparent;
         font-family: var(--font-family);
+        padding-right: 40px;
     }
     //How to select input not empty css selector
     input:not(:placeholder-shown) ~ .search-btn {
